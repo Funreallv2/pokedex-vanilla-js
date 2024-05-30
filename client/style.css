@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
-  -ff-primary: "Open Sans", sans-serif;
-  -ff-secondary: Monospace, sans-serif;
+  --ff-primary: "Open Sans", sans-serif;
+  --ff-secondary: Monospace, sans-serif;
 }
 
 *, ::after, ::before {
@@ -11,3 +11,51 @@
   box-sizing: border-box;
 }
 
+body {
+  background: linear-gradient(270deg, hsl(9, 100%, 64%), hsl(9, 100%, 54%));
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokedex-item img {
+  width: 150px;
+  height: 150px;
+}
+
+.pokedex-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  gap: 2vw;
+}
+
+h1 {
+  text-transform: capitalize;
+  color: white;
+  font-family: var(--ff-primary);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+input {
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  font-family: var(--ff-primary);
+  letter-spacing: 0.125rem;
+  margin-bottom: 2rem;
+}
+.pokedex-item {
+  width: 150px;
+  background: white;
+  filter: drop-shadow(5px 5px 5px #222);
+}
+.pokedex-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pokedex-desc p {
+  font-family: var(--ff-primary);
+}
