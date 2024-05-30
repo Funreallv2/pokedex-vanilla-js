@@ -1,5 +1,5 @@
 import express from 'express'
-import getPokedex, {getLengthPokedex} from '../utils/FileReader.js'
+import getPokedex, {getLengthPokedex, searchPokedex} from '../utils/FileReader.js'
 
 const router = express.Router()
 
@@ -27,6 +27,20 @@ router.get('/:id', async (req, res) => {
     }
   }
   return res.status(500).json({msg: `Element with id: ${id} not found`})
+})
+
+router.get('/search/:text', async (req, res) => {
+  const searcInput = req.params.text
+  try {
+    let results = await searchPokedex(searcInput)
+    if (results.length > 0) {
+      return res.status(200).json(results)
+    }
+    return res.status(500).json({msg: "No pokemon found"})
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({error: "Internal Server Error"})
+  }
 })
 
 export default router

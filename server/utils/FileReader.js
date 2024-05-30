@@ -29,4 +29,18 @@ export const getLengthPokedex = async () => {
   }
 }
 
+export const searchPokedex = async (value) => {
+  try {
+    const data = await fs.readFile(path.join(__updirname, 'pokedex.json'), 'utf-8')
+    const respond = await JSON.parse(data)
+    let validPokemons = [];
+    respond.filter(pokemon => {
+      pokemon.name.english.toLowerCase().includes(value.toLowerCase()) && validPokemons.push(pokemon)
+    })
+    return validPokemons
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 export default getPokedex;
