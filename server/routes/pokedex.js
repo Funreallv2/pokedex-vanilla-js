@@ -3,6 +3,7 @@ import getPokedex, {getLengthPokedex, searchPokedex} from '../utils/FileReader.j
 
 const router = express.Router()
 
+// Get  all pokedex
 router.get('/', async (req, res) => {
   try {
     let pokedex = await getPokedex({type: "all"})
@@ -12,7 +13,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({error: "Internal Server Error"})
   }
 })
-
+// Get pokemon by id
 router.get('/:id', async (req, res) => {
   const id = parseInt(req.params.id)
   if (!isNaN(id) && id > 0) {
@@ -28,7 +29,7 @@ router.get('/:id', async (req, res) => {
   }
   return res.status(500).json({msg: `Element with id: ${id} not found`})
 })
-
+// Get pokemon/s by name 
 router.get('/search/:text', async (req, res) => {
   const searcInput = req.params.text
   try {
