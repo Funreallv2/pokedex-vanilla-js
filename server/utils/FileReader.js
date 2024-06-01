@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const __updirname = path.dirname(__dirname)
 
-
+// Gets all pokemons or by id (depends on option)
 const getPokedex = async (option) => {
   try {
     const pokemonData = await fs.readFile(path.join(__updirname, 'pokedex.json'), 'utf-8')
